@@ -13,7 +13,7 @@
     </a>
   </div>
 
-<app-item-listing  class="item-listing__items item-listing--3items"></app-item-listing>
+<app-item-listing (itemAddedFromList)="itemAdded($event)" class="item-listing__items item-listing--3items"></app-item-listing>
 
   <!-- paging -->
   <div class="paging">

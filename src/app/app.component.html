@@ -1,6 +1,7 @@
 <div class="header">
   <app-top-navbar></app-top-navbar>
-  <app-mid-navbar></app-mid-navbar>
+  <app-mid-navbar [thisAddedProduct]="addedProducts" (productToBeRemoved)="itemToBeRemoved($event)"  ></app-mid-navbar>
+  <!-- [cartTotal]="total" -->
   <app-bottom-navbar></app-bottom-navbar>
 </div>
 
@@ -8,7 +9,7 @@
 <!-- Listing Items -->
 <div class="container">
   <app-side-nav class="filters"></app-side-nav>
-  <app-items-container></app-items-container>
+  <app-items-container (itemAddedFromContainer)="itemAdded($event)"></app-items-container>
   
 </div>
 

@@ -7,15 +7,15 @@ import { Product } from 'src/app/_models/product_item.model';
   styleUrls: ['./items-container.component.scss'],
 })
 export class ItemsContainerComponent implements OnInit {
-  @Output()
-  itemAddedFromContainer: EventEmitter<Product> = new EventEmitter<Product>();
+  // @Output()
+  // itemAddedFromContainer: EventEmitter<Product> = new EventEmitter<Product>();
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  itemAdded(product: Product) {
-    //console.log('From container');
-    this.itemAddedFromContainer.emit(product);
-  }
+  // itemAdded(product: Product) {
+  //   //console.log('From container');
+  //   this.itemAddedFromContainer.emit(product);
+  // }
 }

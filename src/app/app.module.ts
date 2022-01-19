@@ -11,6 +11,8 @@ import { ItemListingComponent } from './product/item-listing/item-listing.compon
 import { ItemComponent } from './product/item/item.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { ItemsContainerComponent } from './product/items-container/items-container.component';
+import { ProductDetailsComponent } from './product/product-details/product-details.component';
+import { ErrorComponent } from './notFound/error.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ItemsContainerComponent } from './product/items-container/items-contain
     ItemListingComponent,
     ItemComponent,
     SideNavComponent,
-    ItemsContainerComponent
+    ItemsContainerComponent,
+    ProductDetailsComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

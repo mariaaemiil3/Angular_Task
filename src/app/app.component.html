@@ -1,17 +1,19 @@
 <div class="header">
   <app-top-navbar></app-top-navbar>
-  <app-mid-navbar [thisAddedProduct]="addedProducts" (productToBeRemoved)="itemToBeRemoved($event)"  ></app-mid-navbar>
-  <!-- [cartTotal]="total" -->
+  <app-mid-navbar   ></app-mid-navbar>
+  <!-- (productToBeRemoved)="itemToBeRemoved($event)" [thisAddedProduct]="addedProducts" -->
   <app-bottom-navbar></app-bottom-navbar>
 </div>
-
+<router-outlet></router-outlet>
 
 <!-- Listing Items -->
-<div class="container">
-  <app-side-nav class="filters"></app-side-nav>
-  <app-items-container (itemAddedFromContainer)="itemAdded($event)"></app-items-container>
+<!-- <div class="container"> -->
   
-</div>
+  <!-- <app-side-nav class="filters"></app-side-nav> -->
+  
+  <!-- <app-items-container ></app-items-container> -->
+  <!-- (itemAddedFromContainer)="itemAdded($event)" -->
+<!-- </div> -->
 
 
 

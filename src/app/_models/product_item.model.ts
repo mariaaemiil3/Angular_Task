@@ -3,6 +3,5 @@ export interface Product {
   price: number;
   description: string;
   discount: number;
-  //count?:number;
   imageUrl: string;
 }

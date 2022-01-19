@@ -23,8 +23,8 @@
             <!-- header -->
             <div class="dropdown__header">
                 <div class="image image--small" style="background-image: url('../../assets/img/311-3119177_svg-shop-cart-shopping-cart-icon-svg-hd.png')">
-                    <div class="notification notification--danger" *ngIf="thisAddedProduct.totalNumberOfElements!==0">
-                        {{thisAddedProduct?.totalNumberOfElements}}
+                    <div class="notification notification--danger" *ngIf="productsCart.totalNumberOfElements!==0">
+                        {{productsCart?.totalNumberOfElements}}
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
             <div class="dropdown__body">
                 <!-- items -->
                 <ul class="dropdown__items list list--vr-separator">
-                    <li class="dropdown__item list__item" *ngFor="let item of thisAddedProduct.productsArray">
+                    <li class="dropdown__item list__item" *ngFor="let item of productsCart.productsArray">
                         <!-- item small 2 -->
                         <div class="item-small-1">
                             <!-- item data -->

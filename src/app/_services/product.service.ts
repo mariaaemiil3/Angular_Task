@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Cart } from '../_models/cart.model';
 import { Product } from '../_models/product_item.model';
 
@@ -11,80 +14,111 @@ export class ProductService {
 
   productsArray: Product[] = [
     {
-      name: 'iPhone 6s',
+      _id:1,
+      data:[{id:1,name:"iPhone 6s",description:"Smart phone"}],
       price: 2500,
       discount: 300,
-      description: 'smart phone from apple',
-      imageUrl: 'https://picsum.photos/200/300',
+      imagesUrls: ['https://picsum.photos/200/300'],
+      categoryId:5,
+      tags:[{name:"tag-1"}],
+      payementType:[{name:"Visa"}]
     },
     {
-      name: 'iPhone 7',
+      _id:2,
+      data:[{id:1,name:"iPhone 7",description:"Smart phone"}],
       price: 3000,
       discount: 0,
-      description: 'smart phone from apple',
-      imageUrl: 'https://picsum.photos/200/100',
+      imagesUrls: ['https://picsum.photos/200/100'],
+      categoryId:5,
+      tags:[{name:"tag-2"}],
+      payementType:[{name:"Visa"}]
     },
     {
-      name: 'iPhone 7 Plus',
+      _id:3,
+      data:[{id:1,name:"iPhone 7 Plus",description:"Smart phone"}],
       price: 4500,
       discount: 100,
-      description: 'smart phone from apple',
-      imageUrl: 'https://picsum.photos/200/200',
+      imagesUrls: ['https://picsum.photos/200/200'],
+      categoryId:5,
+      tags:[{name:"tag-1"}],
+      payementType:[{name:"Visa"}]
     },
     {
-      name: 'iPhone 8',
-      price: 3500,
+      _id:4,
+      data:[{id:1,name:"iPhone 8",description:"Smart phone"}],
+            price: 3500,
       discount: 0,
-      description: 'smart phone from apple',
-      imageUrl: 'https://picsum.photos/200/50',
+      imagesUrls: ['https://picsum.photos/200/50'],
+      categoryId:5,
+      tags:[{name:"tag-2"},{name:"tag-3"}],
+      payementType:[{name:"Visa"}]
     },
     {
-      name: 'iPhone 8 Plus',
+      _id:5,
+      data:[{id:1,name:"iPhone 8 Plus",description:"Smart phone"}],
       price: 4500,
       discount: 0,
-      description: 'smart phone from apple',
-      imageUrl: 'https://picsum.photos/200/400',
+      imagesUrls: ['https://picsum.photos/200/400'],
+      categoryId:5,
+      tags:[{name:"tag-3"}],
+      payementType:[{name:"Visa"}]
     },
     {
-      name: 'iPhone x',
-      price: 10000,
+      _id:6,
+      data:[{id:1,name:"iPhone X",description:"Smart phone"}],
+            price: 10000,
       discount: 200,
-      description: 'smart phone from apple',
-      imageUrl: 'https://picsum.photos/200/500',
+      imagesUrls: ['https://picsum.photos/200/500'],
+      categoryId:5,
+      tags:[{name:"tag-1"},{name:"tag-2"}],
+      payementType:[{name:"Visa"}]
     },
     {
-      name: 'iPhone XR',
+      _id:7,
+      data:[{id:1,name:"iPhone XR",description:"Smart phone"}],
       price: 20600,
       discount: 0,
-      description: 'smart phone from apple',
-      imageUrl: 'https://picsum.photos/200/800',
+      imagesUrls: ['https://picsum.photos/200/800'],
+      categoryId:5,
+      tags:[{name:"tag-1"},{name:"tag-3"}],
+      payementType:[{name:"Visa"}]
     },
     {
-      name: 'iPhone XS Max',
+       _id:8,
+      data:[{id:1,name:"iPhone XS MAX",description:"Smart phone"}],
       price: 20600,
       discount: 300,
-      description: 'smart phone from apple',
-      imageUrl: 'https://picsum.photos/200/80',
+      imagesUrls: ['https://picsum.photos/200/80'],
+      categoryId:5,
+      tags:[{name:"tag-1"}],
+      payementType:[{name:"Visa"}]
     },
     {
-      name: 'iPhone 11',
+       _id:9,
+      data:[{id:1,name:"iPhone 11",description:"Smart phone"}],
       price: 22500,
       discount: 300,
-      description: 'smart phone from apple',
-      imageUrl: 'https://picsum.photos/200/700',
+      imagesUrls: ['https://picsum.photos/200/700'],
+      categoryId:5,
+      tags:[{name:"tag-1"}],
+      payementType:[{name:"Visa"}]
     },
   ];
 
   //productsCart : Cart = {productsArray:[],totalNumberOfElements:0};
 
-  constructor() {}
+  constructor( private httpClient:HttpClient) {}
 
-  getAllProducts(): Product[] {
-    return this.productsArray;
+  getAllProducts() : Observable < {product: Product[], numberOfProducts: number} > {
+    return this.httpClient.get <{product: Product[], numberOfProducts: number}> (`${environment.baseUrl}product`);
+    // return this.productsArray;
   }
 
-  getProductByName(n: string): Product | undefined {
-    return this.productsArray.find((e) => e.name === n);
+  
+
+  getProductById(n: string): Observable < Product > {
+    return this.httpClient.get < Product >(`${environment.baseUrl}product/${n}`);
+    //return this.productsArray.find((e) => e.id === n);
   }
 
   addProduct(p: Product): Product[] {

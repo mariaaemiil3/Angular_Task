@@ -13,6 +13,11 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 import { ItemsContainerComponent } from './product/items-container/items-container.component';
 import { ProductDetailsComponent } from './product/product-details/product-details.component';
 import { ErrorComponent } from './notFound/error.component';
+import { ProductAddComponent } from './product/product-add/product-add.component';
+import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component'
 
 @NgModule({
   declarations: [
@@ -26,11 +31,16 @@ import { ErrorComponent } from './notFound/error.component';
     SideNavComponent,
     ItemsContainerComponent,
     ProductDetailsComponent,
-    ErrorComponent
+    ErrorComponent,
+    ProductAddComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

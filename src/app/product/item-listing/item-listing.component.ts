@@ -5,24 +5,34 @@ import { ProductService } from 'src/app/_services/product.service';
 @Component({
   selector: 'app-item-listing',
   templateUrl: './item-listing.component.html',
-  styleUrls: ['./item-listing.component.scss']
+  styleUrls: ['./item-listing.component.scss'],
 })
 export class ItemListingComponent implements OnInit {
-
   // @Output()
   // itemAddedFromList : EventEmitter <Product> = new EventEmitter<Product>();
 
-  productsArray : Product[]=this.productService.getAllProducts() ;
+  productsArray!: Product[];
 
-  constructor(private productService:ProductService) { }
+  constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
+    this.getAllProducts();
   }
 
+  getAllProducts() {
+    this.productService.getAllProducts().subscribe(
+      (res) => {
+        this.productsArray = res.product;
+      },
+      (err) => {
+        console.log('err happened');
+      },
+      () => {}
+    );
+  }
   // onItemAdded(product : Product){
   //   //console.log("item list");
   //   ///this.itemAddedFromList.emit(product);
   //   this.productService.addProduct(product);
   // }
-
 }

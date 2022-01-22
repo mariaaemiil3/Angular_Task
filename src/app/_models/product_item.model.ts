@@ -1,7 +1,15 @@
+import { Category } from "./category.model";
+import { PaymentType } from "./payment-type.model";
+import { ProductLang } from "./product-lang.model";
+import { Tag } from "./tags.model";
+
 export interface Product {
-  name: string;
-  price: number;
-  description: string;
-  discount: number;
-  imageUrl: string;
+  _id?:number,
+  data:ProductLang[],
+  price: number,
+  discount: number,
+  imagesUrls: string[],
+  categoryId:number,
+  payementType:PaymentType[],
+  tags:Tag[]
 }

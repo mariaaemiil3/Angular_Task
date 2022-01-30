@@ -20,15 +20,16 @@ export class ItemListingComponent implements OnInit {
   }
 
   getAllProducts() {
-    this.productService.getAllProducts().subscribe(
-      (res) => {
-        this.productsArray = res.product;
-      },
-      (err) => {
-        console.log('err happened');
-      },
-      () => {}
-    );
+    // this.productService.getAllProducts().subscribe(
+    //   (res) => {
+    //     this.productsArray = res.product.splice(0,18);
+    //   },
+    //   (err) => {
+    //     console.log('err happened');
+    //   },
+    //   () => {}
+    // );
+    this.productsArray= this.productService.getAllProducts();
   }
   // onItemAdded(product : Product){
   //   //console.log("item list");

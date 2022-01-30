@@ -41,10 +41,10 @@
                     <input type="text" class="form-control" title="Qty" value="1">
                     <a href="#" class="increment-control__action">+</a>
                 </div>
-                <button href="#" class="btn btn--primary">Add to cart</button>
+                <button (click)="onAddToCartPressed()" class="btn btn--primary">Add to cart</button>
             </div>
             <div class="product-details__meta">
-                Categories: <a rel="tag" href="#">{{product.categoryId}}</a>, <a rel="tag" href="#">{{product.tags}}</a>.
+                Categories: <a rel="tag" href="#">{{getCategoryNameById(product.categoryId)}}</a>, <a rel="tag" href="#">{{product.tags[0].name}}</a>.
             </div>
         </div>
     </section>
@@ -64,17 +64,14 @@
             <div class="tabs__body active">
                 <div class="product-details__desc">
                     <p>
-                        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Lorem ipsum
-                        dolor sit amet, consectetur adipiscing elit. Fusce sagittis, massa fringilla consequat blandit,
-                        mauris ligula porta nisi, non tristique enim sapien vel nisl. Suspendisse vestibulum lobortis
-                        dapibus.
+                        {{product.data[0].description}}
                     </p>
-                    <p>
+                    <!-- <p>
                         Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Lorem ipsum
                         dolor sit amet, consectetur adipiscing elit. Fusce sagittis, massa fringilla consequat blandit,
                         mauris ligula porta nisi, non tristique enim sapien vel nisl. Suspendisse vestibulum lobortis
                         dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-                    </p>
+                    </p> -->
                 </div>   
             </div>
             <div class="tabs__body ">
@@ -91,77 +88,8 @@
         <h3>Related <strong>Products</strong></h3>
         <div class="item-listing__items item-listing--4items">
             <!-- medium item -->
-            <app-item *ngFor="let item of this.relatedProductsArray" [productItem]=item></app-item>
-            <!-- <div class="item-medium-1">
-                <div class="item-medium-1__image image" style="background-image: url('img/products/product-grey-1.jpg')">
-                    <a href="#" class="item-medium-1__action">Add to Cart</a>
-                </div>
-                <a href="#">
-                    <h4>Photo Camera</h4>
-                    <div>
-                        <del>$325</del>
-                        <span class="lable">$299</span>
-                    </div>
-                </a>
-                <div class="crud-actions">
-                    <a href="#"><i class="far fa-eye"></i></a>
-                    <a href="#"><i class="fas fa-edit"></i></a>
-                    <a href="#"><i class="fas fa-trash-alt"></i></a>
-                </div>
-            </div>
-            <div class="item-medium-1">
-                <div class="item-medium-1__image image" style="background-image: url('img/products/product-grey-1.jpg')">
-                    <a href="#" class="item-medium-1__action">Add to Cart</a>
-                </div>
-                <a href="#">
-                    <h4>Photo Camera</h4>
-                    <div>
-                        <del>$325</del>
-                        <span class="lable">$299</span>
-                    </div>
-                </a>
-                <div class="crud-actions">
-                    <a href="#"><i class="far fa-eye"></i></a>
-                    <a href="#"><i class="fas fa-edit"></i></a>
-                    <a href="#"><i class="fas fa-trash-alt"></i></a>
-                </div>
-            </div>
-            <div class="item-medium-1">
-                <div class="item-medium-1__alert">Sale</div>
-                <div class="item-medium-1__image image" style="background-image: url('img/products/product-grey-1.jpg')">
-                    <a href="#" class="item-medium-1__action">Add to Cart</a>
-                </div>
-                <a href="#">
-                    <h4>Photo Camera</h4>
-                    <div>
-                        <del>$325</del>
-                        <span class="lable">$299</span>
-                    </div>
-                </a>
-                <div class="crud-actions">
-                    <a href="#"><i class="far fa-eye"></i></a>
-                    <a href="#"><i class="fas fa-edit"></i></a>
-                    <a href="#"><i class="fas fa-trash-alt"></i></a>
-                </div>
-            </div>
-            <div class="item-medium-1">
-                <div class="item-medium-1__alert">Sale</div>
-                <div class="item-medium-1__image image" style="background-image: url('img/products/product-grey-1.jpg')">
-                    <a href="#" class="item-medium-1__action">Add to Cart</a>
-                </div>
-                <a href="#">
-                    <h4>Photo Camera</h4>
-                    <div>
-                        <del>$325</del>
-                        <span class="lable">$299</span>
-                    </div>
-                </a>
-                <div class="crud-actions">
-                    <a href="#"><i class="far fa-eye"></i></a>
-                    <a href="#"><i class="fas fa-edit"></i></a>
-                    <a href="#"><i class="fas fa-trash-alt"></i></a>
-                </div>
-            </div> -->
+            <app-item class="item-medium-1" *ngFor="let item of this.relatedProductsArray.splice(0,4)" [productItem]=item></app-item>
+            
         </div>
     </section>
 </div>

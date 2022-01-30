@@ -27,6 +27,10 @@ export class ItemComponent implements OnInit {
     
   }
 
+  deleteProduct(pId:number){
+    this.productService.deleteProduct(pId);
+  }
+
   ngOnDestroy():void{
 
   }

@@ -35,6 +35,9 @@ export class MidNavbarComponent implements OnInit {
         this.productsCart.totalNumberOfElements++;
         //console.log(this.productsCart.totalNumberOfElements);
         
+      },(err)=>{
+        console.log(err);
+        
       }
     )
   }

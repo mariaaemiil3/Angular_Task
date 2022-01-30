@@ -1,28 +1,28 @@
  <!-- Register -->
  <div class="container">
-    <form class="login">
+    <form class="login" #myRegisterForm='ngForm'>
         <h4 class="login__header">
             Register An Account
         </h4>
         <div class="form-group">
             <label for="">E-mail Address</label>
-            <input class="form-control" type="text" name="" id="">
+            <input class="form-control" ngModel #emailInput='ngModel' type="text" name="email" id="">
         </div>
         <div class="form-row">
             <div class="form-group">
                 <label for="">Password</label>
-                <input class="form-control" type="text" name="" id="">
+                <input class="form-control" ngModel #passwordInput='ngModel' type="text" name="password" id="">
             </div>
             <div class="form-group">
                 <label for="">Re-enter Password</label>
-                <input class="form-control" type="text" name="" id="">
+                <input class="form-control" ngModel #rePasswordInput='ngModel' type="text" name="rePassword" id="">
             </div>
         </div>
 
         <div class="login__remember-me">
             <div class="add-product__actions">
                 <button href="#" class="btn btn--gray">Cancel</button>
-                <button href="#" class="btn btn--primary">Register</button>
+                <button (click)="onSubmit(myRegisterForm)" class="btn btn--primary">Register</button>
             </div>
         </div>
         <a routerLink="/login" class="login__register-now">You are alredy a member?</a>

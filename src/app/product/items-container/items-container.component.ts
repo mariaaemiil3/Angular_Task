@@ -20,13 +20,24 @@ export class ItemsContainerComponent implements OnInit {
   constructor(private categoryService:CategoryService, private tagService:TagService) {}
 
   ngOnInit(): void {
-    this.categoriesArray = this.getAllCategories();
+    //this.categoriesArray = this.getAllCategories();
+    ///this.getAllCategories();
+    this.categoriesArray = this.categoryService.getAllCategories();
+
     this.tagsArray = this.getAllTags();
   }
 
-  getAllCategories(): Category[] {
-    return this.categoryService.getAllCategories();
-  }
+  // getAllCategories() {
+  //    this.categoryService.getAllCategories().subscribe(
+  //     (res)=>{
+  //       this.categoriesArray = res.splice(0);
+  //     },
+  //     (err)=>{
+  //       console.log("Error getting categories");
+        
+  //     }
+  //   );;
+  // }
 
   getAllTags():Tag[]{
     return this.tagService.getAllTags();

@@ -6,6 +6,8 @@ import { ProductAddComponent } from './product/product-add/product-add.component
 import { ItemsContainerComponent } from './product/items-container/items-container.component';
 import { ProductDetailsComponent } from './product/product-details/product-details.component';
 import { RegisterComponent } from './register/register.component';
+import { ProductEditComponent } from './product/product-edit/product-edit.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'/home',pathMatch:'full'},
@@ -15,7 +17,9 @@ const routes: Routes = [
   {path:'product',children:[
     {path:'details/:productId',component:ProductDetailsComponent},
     {path:'add',component:ProductAddComponent},
+    {path:'edit',component:ProductEditComponent}
   ]},
+  {path:'aboutUs',component:AboutUsComponent},
   {path:'**',component:ErrorComponent}
 
 ];

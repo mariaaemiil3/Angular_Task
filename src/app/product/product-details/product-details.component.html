@@ -37,9 +37,9 @@
             </p>
             <div class="product-details__add">
                 <div class="increment-control">
-                    <a href="#" class="increment-control__action">-</a>
-                    <input type="text" class="form-control" title="Qty" value="1">
-                    <a href="#" class="increment-control__action">+</a>
+                    <a (click)="decreaseQtyPressed()" class="increment-control__action">-</a>
+                    <input type="text" class="form-control" title="Qty" value="{{staticCount}}">
+                    <a (click)="increaseQtyPressed()" class="increment-control__action">+</a>
                 </div>
                 <button (click)="onAddToCartPressed()" class="btn btn--primary">Add to cart</button>
             </div>
@@ -88,7 +88,7 @@
         <h3>Related <strong>Products</strong></h3>
         <div class="item-listing__items item-listing--4items">
             <!-- medium item -->
-            <app-item class="item-medium-1" *ngFor="let item of this.relatedProductsArray.splice(0,4)" [productItem]=item></app-item>
+            <app-item class="item-medium-1" *ngFor="let item of this.relatedProductsArray" [productItem]=item></app-item>
             
         </div>
     </section>

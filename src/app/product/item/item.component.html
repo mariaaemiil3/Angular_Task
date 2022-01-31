@@ -14,8 +14,8 @@
         </div>
     </a>
     <div class="crud-actions">
-        <a href="#"><i class="far fa-eye"></i></a>
+        <a [routerLink]="'/product/details/'+productItem._id"><i class="far fa-eye"></i></a>
         <a routerLink="/product/edit"><i class="fas fa-edit"></i></a>
-        <a (click)="deleteProduct(productItem._id)"><i class="fas fa-trash-alt"></i></a>
+        <a routerLink="/home" (click)="deleteProduct(productItem._id)"><i class="fas fa-trash-alt"></i></a>
     </div>
 </div>

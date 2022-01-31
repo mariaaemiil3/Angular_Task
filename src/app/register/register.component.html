@@ -1,30 +1,80 @@
- <!-- Register -->
- <div class="container">
-    <form class="login" #myRegisterForm='ngForm'>
-        <h4 class="login__header">
-            Register An Account
-        </h4>
-        <div class="form-group">
-            <label for="">E-mail Address</label>
-            <input class="form-control" ngModel #emailInput='ngModel' type="text" name="email" id="">
-        </div>
-        <div class="form-row">
-            <div class="form-group">
-                <label for="">Password</label>
-                <input class="form-control" ngModel #passwordInput='ngModel' type="text" name="password" id="">
-            </div>
-            <div class="form-group">
-                <label for="">Re-enter Password</label>
-                <input class="form-control" ngModel #rePasswordInput='ngModel' type="text" name="rePassword" id="">
-            </div>
-        </div>
+<!-- Register -->
+<div class="container">
+  <form class="login" #myRegisterForm=ngForm>
+    <h4 class="login__header">Register An Account</h4>
+    <div class="form-group">
+      <label for="">E-mail Address</label>
+      <input
+        class="form-control"
+        ngModel
+        [ngClass]="{ invalid: emailInput.invalid && emailInput.touched }"
+        #emailInput="ngModel"
+        type="text"
+        required
+        pattern="/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/"
+        name="email"
+        id="email"
+      />
+      <span style="color:red"
+        *ngIf="emailInput.touched && emailInput.invalid && emailInput.errors?.['pattern'] "
+        >Please enter a valid email address</span
+      >
+      <span style="color:red"
+        *ngIf="emailInput.touched && emailInput.invalid && emailInput.errors?.['required'] "
+        >This field is required</span
+      >
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="">Password</label>
+        <input
+          class="form-control"
+          ngModel
+          [ngClass]="{ invalid: passwordInput.invalid && passwordInput.touched }"
+          #passwordInput="ngModel"
+          minlength="8"
+          required
+          type="password"
+          name="password"
+          id="password"
+        />
+        <span style="color:red"
+        *ngIf="passwordInput.touched && passwordInput.invalid && passwordInput.errors?.['required'] "
+        >This field is required</span
+      >
+      </div>
+      <div class="form-group">
+        <label for="">Re-enter Password</label>
+        <input
+          class="form-control"
+          ngModel
+          [ngClass]="{ invalid: rePasswordInput.invalid && rePasswordInput.touched }"
+          #rePasswordInput="ngModel"
+          minlength="8"
+          required
+          type="password"
+          name="rePassword"
+          id="rePassword"
+        />
+        <span style="color:red"
+        *ngIf="rePasswordInput.touched && rePasswordInput.invalid && rePasswordInput.errors?.['required'] "
+        >This field is required</span
+      >
+      </div>
+    </div>
 
-        <div class="login__remember-me">
-            <div class="add-product__actions">
-                <button href="#" class="btn btn--gray">Cancel</button>
-                <button (click)="onSubmit(myRegisterForm)" class="btn btn--primary">Register</button>
-            </div>
-        </div>
-        <a routerLink="/login" class="login__register-now">You are alredy a member?</a>
-    </form>
+    <div class="login__remember-me">
+      <div class="add-product__actions">
+        <button (click)="onCancel(myRegisterForm)" class="btn btn--gray">
+          Cancel
+        </button>
+        <button (click)="onSubmit(myRegisterForm)" class="btn btn--primary" [disabled]="!myRegisterForm.valid">
+          Register
+        </button>
+      </div>
+    </div>
+    <a routerLink="/login" class="login__register-now"
+      >You are alredy a member?</a
+    >
+  </form>
 </div>

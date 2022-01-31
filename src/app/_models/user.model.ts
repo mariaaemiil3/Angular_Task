@@ -1,6 +1,5 @@
 export interface User{
     _id?:number,
     email:string,
-    password:string,
-    repeatedPassword:string
+    password:string
 }

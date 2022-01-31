@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Cart } from 'src/app/_models/cart.model';
 import { Category } from 'src/app/_models/category.model';
 import { Product } from 'src/app/_models/product_item.model';
 import { CategoryService } from 'src/app/_services/category.service';
@@ -12,12 +13,14 @@ import { ProductService } from 'src/app/_services/product.service';
 })
 export class ProductDetailsComponent implements OnInit {
   @Input()
-  productItem !: Product;
+  productItem!: Product;
 
-  relatedProductsArray!: Product[];
+  relatedProductsArray: Product[] = [];
   pArray!: Product[];
   product!: Product;
   pIdx!: number;
+  static count: number = 0;
+  productsCart: Cart = { productsArray: [], totalNumberOfElements: 0 };
   //productDetails!:Product;
   //thisProduct!:Product;
   category!: Category;
@@ -39,11 +42,13 @@ export class ProductDetailsComponent implements OnInit {
     //   () => {}
     // );
     this.pArray = this.productService.getAllProducts();
-    this.pIdx = this.pArray.findIndex((p) => p._id == this.product._id);
-    this.relatedProductsArray = this.pArray
+    this.pIdx = this.pArray.findIndex((p) => p._id === this.product._id);
+    this.relatedProductsArray = this.pArray.slice();
     //.splice(this.pIdx + 1, 4);
-    return this.relatedProductsArray;
+    return this.relatedProductsArray.splice(this.pIdx, 5);
   }
+
+  ///using backend
 
   // getProductById(n: string) {
   //   this.productService.getProductById(n).subscribe(
@@ -68,6 +73,8 @@ export class ProductDetailsComponent implements OnInit {
     return this.productService.getProductById(pId);
   }
 
+
+   ///using backend
   // getCategoryNameById(id:string):string{
   //   this.categoryService.getCategoryById(id).subscribe(
   //     (res)=>{
@@ -83,7 +90,8 @@ export class ProductDetailsComponent implements OnInit {
   // }
 
   getCategoryNameById(cId: string): string {
-    return this.categoryService.getCategoryById(cId).name;
+    this.category = this.categoryService.getCategoryById(cId);
+    return this.category.name;
   }
 
   ngOnInit(): void {
@@ -107,16 +115,35 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
 
+  onAddToCartPressed() {
 
-  onAddToCartPressed(){
     //console.log("Add to cart pressed");
     //this.itemAdded.emit(this.productItem);
-    this.productService.itemAdded.emit(this.product);
+    for (let i = 0; i < this.staticCount; i++) {
+      this.productService.itemAdded.emit(this.product);
+    }
     
   }
 
-  deleteProduct(pId:number){
-    this.productService.deleteProduct(pId);
+  get staticCount() {
+    return ProductDetailsComponent.count;
   }
 
+  increaseQtyPressed(): number {
+    ProductDetailsComponent.count++;
+    console.log(ProductDetailsComponent.count);
+    return ProductDetailsComponent.count;
+  }
+
+  decreaseQtyPressed(): number {
+    if (ProductDetailsComponent.count > 0) {
+      ProductDetailsComponent.count--;
+      console.log(ProductDetailsComponent.count);
+      return ProductDetailsComponent.count;
+    } else return 0;
+  }
+
+  // deleteProduct(pId:number){
+  //   this.productService.deleteProduct(pId);
+  // }
 }

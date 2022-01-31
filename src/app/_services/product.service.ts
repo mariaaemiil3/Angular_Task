@@ -139,6 +139,8 @@ export class ProductService {
   addProduct(p: Product): Product[] {
     //this.productsCart.productsArray.push(p);
     this.productsArray.push(p);
+    console.log(this.productsArray);
+    
     return this.productsArray;
   }
 

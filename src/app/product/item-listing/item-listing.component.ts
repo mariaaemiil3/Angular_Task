@@ -20,6 +20,9 @@ export class ItemListingComponent implements OnInit {
   }
 
   getAllProducts() {
+
+     ///using backend
+
     // this.productService.getAllProducts().subscribe(
     //   (res) => {
     //     this.productsArray = res.product.splice(0,18);
@@ -31,6 +34,8 @@ export class ItemListingComponent implements OnInit {
     // );
     this.productsArray= this.productService.getAllProducts();
   }
+
+  
   // onItemAdded(product : Product){
   //   //console.log("item list");
   //   ///this.itemAddedFromList.emit(product);

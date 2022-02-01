@@ -19,6 +19,7 @@ export class UserService {
   constructor(private httpClient: HttpClient) {}
 
   addUser(newUser: User) {
+    ////backend
     //this.httpClient.post(`${environment.baseUrl}user/register`,newUser);
     this.usersArray.push(newUser);
     console.log(this.usersArray);

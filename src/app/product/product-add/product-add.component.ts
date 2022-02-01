@@ -49,6 +49,7 @@ export class ProductAddComponent implements OnInit {
     return this.tagService.getAllTags();
   }
 
+   ///using backend
   // getAllCategories(){
   //    this.categoryService.getAllCategories().subscribe(
   //     (res)=>{

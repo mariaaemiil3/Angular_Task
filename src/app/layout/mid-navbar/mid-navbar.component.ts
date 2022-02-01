@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Cart } from '../_models/cart.model';
-import { Product } from '../_models/product_item.model';
-import { ProductService } from '../_services/product.service';
+import { Cart } from '../../_models/cart.model';
+import { Product } from '../../_models/product_item.model';
+import { ProductService } from '../../_services/product.service';
 
 @Component({
   selector: 'app-mid-navbar',

@@ -105,7 +105,17 @@ export class ProductService {
     },
   ];
 
-  newProduct!: Product;
+  newProduct: Product = {
+    _id: 0,
+    data: [{ name: '', description: '' }],
+    price: 0,
+    discount: 0,
+    categoryId: '',
+    imagesUrls: ['https://picsum.photos/300/300'],
+    payementType: [{ name: '' }],
+    tags: [{ name: '' }],
+  };
+
   newProductIdx!: number;
   //productsCart : Cart = {productsArray:[],totalNumberOfElements:0};
 
@@ -114,7 +124,7 @@ export class ProductService {
   getAllProducts(): Product[] {
     return this.productsArray;
   }
-
+////backend
   // getAllProducts(): Observable<{
   //   product: Product[];
   //   numberOfProducts: number;
@@ -126,13 +136,14 @@ export class ProductService {
   //   // return this.productsArray;
   // }
 
+  ////backend
   // getProductById(n: string): Observable<Product> {
   //   return this.httpClient.get<Product>(`${environment.baseUrl}product/${n}`);
   //   //return this.productsArray.find((e) => e.id === n);
   // }
+
+
   getProductById(n: number): Product {
-    //return this.httpClient.get<Product>(`${environment.baseUrl}product/${n}`);
-    
     return this.productsArray.find((e) => e._id == n)!;
   }
 
@@ -148,9 +159,13 @@ export class ProductService {
     this.newProductIdx = this.productsArray.findIndex(
       (item) => item._id === p._id
     );
+    
     this.newProduct = this.productsArray[this.newProductIdx];
+
     this.newProduct.data[0].name = p.data[0].name;
     this.newProduct.data[0].description = p.data[0].description;
+    this.newProduct.price = p.price;
+    this.newProduct.discount = p.discount;
     return this.newProduct;
   }
 
@@ -161,13 +176,6 @@ export class ProductService {
     //console.log(this.productsArray);
     
   }
-  // addItemtoCart(p:Product){
 
-  //   console.log(this.productsCart.productsArray);
-
-  //   //this.productsCart.productsArray.push();
-  //   return this.productsCart.productsArray;
-
-  // }
  
 }

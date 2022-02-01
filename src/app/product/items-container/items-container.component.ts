@@ -27,6 +27,7 @@ export class ItemsContainerComponent implements OnInit {
     this.tagsArray = this.getAllTags();
   }
 
+   ///using backend
   // getAllCategories() {
   //    this.categoryService.getAllCategories().subscribe(
   //     (res)=>{

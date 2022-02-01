@@ -1,6 +1,6 @@
 <!-- Login -->
 <div class="container">
-  <form class="login" #LoginForm="ngForm">
+  <form class="login" #LoginForm="ngForm" >
     <h4 class="login__header">I'M A RETURNING CUSTOMER</h4>
     <div class="form-group">
       <label for="">Username or E-mail Address</label>
@@ -9,17 +9,18 @@
         type="text"
         ngModel
         [ngClass]="{ invalid: emailInput.invalid && emailInput.touched }"
-        pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
+        
         #emailInput="ngModel"
         required
         name="email"
-        id=""
+        id="email"
       />
-      <span
+      <!-- pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" -->
+      <!-- <span
         style="color: red"
         *ngIf="emailInput.touched && emailInput.invalid && emailInput.errors?.['pattern'] "
         >Please enter a valid email address</span
-      >
+      > -->
       <span
         style="color: red"
         *ngIf="emailInput.touched && emailInput.invalid && emailInput.errors?.['required'] "
@@ -36,7 +37,7 @@
         #passwordInput="ngModel"
         type="password"
         name="password"
-        id=""
+        id="pass"
       />
       <span style="color:red"
       *ngIf="passwordInput.touched && passwordInput.invalid && passwordInput.errors?.['required'] "
@@ -52,7 +53,7 @@
         <button (click)="onCancel(LoginForm)" class="btn btn--gray">
           Cancel
         </button>
-        <button (click)="checkUser(LoginForm)" class="btn btn--primary">
+        <button (click)="checkUser(LoginForm)" routerLink="/home" class="btn btn--primary">
           Login
         </button>
       </div>
